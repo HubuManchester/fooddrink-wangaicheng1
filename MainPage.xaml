@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodExplorer.MainPage"
+             BackgroundColor="{AppThemeBinding Light=#FAFAFA, Dark=#121212}">
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="30" VerticalOptions="Center">
+
+            <Label Text="🍔 Food Explorer" 
+                   FontSize="32" 
+                   HorizontalOptions="Center" 
+                   FontAttributes="Bold"
+                   SemanticProperties.HeadingLevel="Level1" />
+
+            <Label Text="Log your culinary journeys and discover local dining spots"
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   TextColor="Gray" />
+
+            <Button x:Name="CameraBtn"
+                    Text="📷 Snap a Photo"
+                    SemanticProperties.Description="Click to open the camera and take a photo of your meal"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Margin="0,20,0,0"
+                    Clicked="OnCameraBtnClicked" />
+
+            <Button x:Name="LocationBtn"
+                    Text="📍 Find Nearby Restaurants"
+                    SemanticProperties.Description="Click to get your current location coordinates"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    Clicked="OnLocationBtnClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

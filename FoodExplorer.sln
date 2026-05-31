@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37111.16 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodExplorer", "FoodExplorer\FoodExplorer.csproj", "{F52D6D03-97C2-457F-9C05-2DF7E2331822}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F52D6D03-97C2-457F-9C05-2DF7E2331822}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F52D6D03-97C2-457F-9C05-2DF7E2331822}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F52D6D03-97C2-457F-9C05-2DF7E2331822}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F52D6D03-97C2-457F-9C05-2DF7E2331822}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F52D6D03-97C2-457F-9C05-2DF7E2331822}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F52D6D03-97C2-457F-9C05-2DF7E2331822}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B7E4CF7-7B5D-4A0A-A1CA-849FF55AD624}
+	EndGlobalSection
+EndGlobal

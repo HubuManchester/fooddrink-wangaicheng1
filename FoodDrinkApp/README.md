@@ -1,58 +1,61 @@
-# 食光营养助手
+# Food Explorer 🍔
 
-食光营养助手是一个基于 .NET MAUI 的“食品与饮品”课程项目应用。应用可以记录食品和饮品，展示营养摘要，验证用户输入，并演示移动设备硬件功能。
+## 🎓 Academic Metadata
+- **Developer Name:** Wang Aicheng
+- **Student ID:** 21906388
 
-## 主要功能
+---
 
-- 食品和饮品列表，支持搜索和详情页。
-- 添加记录表单，检查必填项和营养数值。
-- 使用相机拍摄食品照片并预览。
-- 使用定位记录用餐或购买地点。
-- 使用文字转语音朗读营养摘要和帮助内容。
-- 使用震动与触觉反馈提供操作提醒。
-- 支持主题切换和大字体模式。
-- 包含语义标签、屏幕阅读器播报和清晰的验证提示。
+Food Explorer is a .NET MAUI-based "Food and Drink" course project application. The application allows users to log food and drinks, display nutritional summaries, validate user inputs, and demonstrate mobile device hardware capabilities.
 
-## 评分点覆盖
+## Main Features
 
-- UI/UX 与无障碍：XAML 页面、底部导航、一致的视觉风格、深色模式、语义描述和屏幕阅读器播报。
-- 移动硬件：相机、定位、文字转语音、震动和触觉反馈。
-- 功能完整性：列表、搜索、添加、详情、设置和硬件演示流程。
-- 验证与错误处理：必填项检查、数字检查、权限错误和硬件不可用提示。
-- 代码质量：模型和服务分离、命名清晰、可复用的目录服务，以及范围清晰的页面代码。
-- 部署：面向 Android 和 Windows 的 .NET MAUI 跨平台应用。
-- GitHub 使用：建议持续提交，例如 `添加食品列表`、`实现硬件页面`、`添加输入验证`。
+- Food and drink list with dynamic search support and item detail pages.
+- Add entry form with validation checks for required fields and nutritional values.
+- Native camera integration to capture and preview real-time food photography.
+- GPS Geolocation services to record dining or purchasing locations.
+- Text-to-Speech synthesis to read aloud nutritional summaries and help content.
+- Physical vibration and haptic feedback integrations for operational alerts.
+- Dynamic support for manually switching themes (Dark/Light mode) and Large Text Mode.
+- Complete inclusion of semantic tags, screen reader announcements, and clear validation flags.
 
-## 运行方式
+## Marking Criteria Coverage
 
-使用安装了 .NET MAUI 工作负载的 Visual Studio 2022 打开 `FoodDrinkApp.csproj` 或 `FoodDrinkApp.sln`。
+- **UI/UX & Accessibility:** Responsive XAML pages, bottom tab bar navigation, cohesive visual styles, dark mode emulation, semantic descriptions, and screen reader announcements.
+- **Mobile Hardware:** Camera integration, Geolocation satellite tracking, Text-to-Speech audio synthesis, physical vibration, and mechanical haptic feedback.
+- **Functional Integrity:** Complete operational flow across ledger lists, keyword searching, entry adding, detail views, settings tabs, and hardware demonstration workflows.
+- **Validation & Error Handling:** Mandatory entry constraints, numeric value checks, privilege permission errors, and hardware unavailability handling alerts.
+- **Code Quality:** Separation of concerns between Models and Services, clear naming conventions, reusable catalog service components, and well-scoped page code-behind files.
+- **Deployment:** Cross-platform target compilation supporting both Android and Windows applications via .NET MAUI.
+- **GitHub Usage:** Recommendations for continuous commit tracking (e.g., `Add food list`, `Implement hardware page`, `Add input validation`).
 
-推荐演示目标：
+## How to Run
 
-- Android 模拟器
+Open `FoodDrinkApp.csproj` or `FoodDrinkApp.sln` using Visual Studio 2022 configured with the .NET MAUI workload environment.
+
+Recommended deployment targets:
+- Android Emulator
 - Windows Machine
 
-Windows 构建命令：
-
+Windows Build Command:
 ```powershell
 dotnet build .\FoodDrinkApp.csproj -f net9.0-windows10.0.19041.0
 ```
 
-Android 构建命令：
-
+Android Build Command:
 ```powershell
 dotnet build .\FoodDrinkApp.csproj -f net9.0-android
 ```
 
-本项目通过 `Directory.Build.props` 将构建输出放到 `C:\MauiBuild\NutriTrack\`，用于规避 Android 打包工具在中文路径下的 `assets` 路径问题。
+*Note: This project leverages a structured props redirection script (`Directory.Build.props`) to route intermediate compilation outputs onto `C:\MauiBuild\NutriTrack\`. This effectively avoids the packaging path issues caused by multi-byte or Chinese characters inside the local Android SDK assets toolchains.*
 
-## 录屏演示清单
+## Screencast Demonstration Checklist
 
-- 说明“食品与饮品”主题和“食光营养助手”的应用概念。
-- 展示搜索、详情页和添加新记录。
-- 演示不填必填项、输入非法数字时的验证提示。
-- 演示相机、定位、文字转语音、震动和触觉反馈。
-- 展示深色模式和大字体模式。
-- 展示关键代码文件：模型、服务、页面和 Android 权限配置。
-- 展示 Android 和 Windows 部署效果。
-- 展示 GitHub 提交历史和 README。
+- Articulate the core application concept of "Food Explorer" and its absolute adherence to the "Food and Drink" course theme.
+- Demonstrate core functional views: keyword searching, detail records, and adding new item rows.
+- Trigger validation constraints: intentionally attempt to submit empty items or illegal numeric entries to show error popups.
+- Execute native mobile hardware layers: launch camera photo capture, request GPS satellite coordinates, play Text-to-Speech, and trigger haptic feedback loops.
+- Verify user accessibility controls: switch seamlessly between light/dark contrast stylesheets and toggle Large Text Mode to demonstrate cross-page layout reflow.
+- Highlight crucial codebase source files: separation of Models and Services, page code-behinds, and platform-specific Android permission descriptors.
+- Confirm flawless deployment rendering on both Android and Windows environments.
+- Present continuous version control commit histories alongside this comprehensive README overview.

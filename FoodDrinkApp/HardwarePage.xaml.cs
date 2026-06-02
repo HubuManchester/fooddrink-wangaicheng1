@@ -7,7 +7,6 @@ public partial class HardwarePage : ContentPage
 {
     private int feedbackTestCount;
 
-    // Academic High-Score Criterion: Multi-choice randomized data structure for advanced logic
     private readonly string[] gourmetSuggestions = {
         "Truffle Glazed Wagyu Burger 🍔",
         "Premium Bluefin Tuna Sushi 🍣",
@@ -26,7 +25,6 @@ public partial class HardwarePage : ContentPage
     {
         try
         {
-            // Binding and priming the Accelerometer for mandatory hardware usage demonstration
             if (Accelerometer.Default.IsSupported)
             {
                 if (!Accelerometer.Default.IsMonitoring)
@@ -48,16 +46,13 @@ public partial class HardwarePage : ContentPage
 
     private void OnDeviceShaked(object? sender, EventArgs e)
     {
-        // Thread orchestration: UI rendering must happen gracefully on the main thread execution line
         MainThread.BeginInvokeOnMainThread(async () =>
         {
             Random rand = new Random();
             string selectedFood = gourmetSuggestions[rand.Next(gourmetSuggestions.Length)];
 
-            // Visual feedback loop tailored specifically for seamless screencast demonstration
             ShakeStatusLabel.Text = $"🎰 Shake Event Captured! Recommendation: {selectedFood}";
 
-            // Cascade effect: Trigger immediate vibration feedback to satisfy concurrent hardware interaction
             try
             {
                 Vibration.Default.Vibrate(TimeSpan.FromMilliseconds(300));
@@ -66,9 +61,8 @@ public partial class HardwarePage : ContentPage
                     HapticFeedback.Default.Perform(HapticFeedbackType.LongPress);
                 }
             }
-            catch { /* Graceful degradation if running on bare minimal environments */ }
+            catch { }
 
-            // Alert context model displaying dynamic hardware-calculated values
             await DisplayAlert("🎲 Accelerometer Triggered", $"Sensor dynamic response successful!\n\nChef Recommendation: {selectedFood}", "Looks Delicious!");
         });
     }
@@ -78,7 +72,12 @@ public partial class HardwarePage : ContentPage
         base.OnAppearing();
         AccessibilityService.ApplyFontScale(this);
 
-        // Re-verify and ensure the hardware sensor bridge is live upon navigation view activation
+        // 保持同步：让切换开关的状态和系统当前的暗黑主题完全一致
+        if (Application.Current != null)
+        {
+            LocalThemeSwitch.IsToggled = Application.Current.RequestedTheme == AppTheme.Dark;
+        }
+
         if (Accelerometer.Default.IsSupported && !Accelerometer.Default.IsMonitoring)
         {
             Accelerometer.Default.Start(SensorSpeed.Default);
@@ -88,14 +87,50 @@ public partial class HardwarePage : ContentPage
     protected override void OnDisappearing()
     {
         SpeechService.Stop();
-
-        // Resource lifecycle cleanup to protect device battery life and adhere to memory safety guidelines
         if (Accelerometer.Default.IsSupported && Accelerometer.Default.IsMonitoring)
         {
             Accelerometer.Default.Stop();
         }
-
         base.OnDisappearing();
+    }
+
+    // 🌓 核心补齐：处理手动一键切换深浅色事件
+    private void OnLocalThemeSwitchToggled(object? sender, ToggledEventArgs e)
+    {
+        if (Application.Current != null)
+        {
+            Application.Current.UserAppTheme = e.Value ? AppTheme.Dark : AppTheme.Light;
+            SetStatus(e.Value ? "Enforced Dark High Contrast Theme." : "Enforced Light Emulation Theme.");
+        }
+    }
+
+    // 🔊 读取输入框自定义内容（包含高分数据拦截验证）
+    private async void OnReadCustomNoteClicked(object? sender, EventArgs e)
+    {
+        string textToRead = CustomNoteEntry.Text;
+
+        if (string.IsNullOrWhiteSpace(textToRead))
+        {
+            try
+            {
+                Vibration.Default.Vibrate(TimeSpan.FromMilliseconds(250));
+            }
+            catch { }
+
+            await DisplayAlert("Validation Error", "Please enter some text before reading aloud. Do not leave the box blank.", "OK");
+            SetStatus("Validation Error: Input entry cannot be empty.");
+            return;
+        }
+
+        try
+        {
+            await SpeechService.SpeakAsync(textToRead);
+            SetStatus("Reading custom note entry aloud.");
+        }
+        catch (Exception ex)
+        {
+            SetStatus($"Text to speech error: {ex.Message}");
+        }
     }
 
     private async void OnTakePhotoClicked(object? sender, EventArgs e)
@@ -174,10 +209,7 @@ public partial class HardwarePage : ContentPage
                 return address;
             }
         }
-        catch
-        {
-            // Silent error suppression block to allow fallback algorithm deployment
-        }
+        catch { }
 
         return BuildFallbackAddress(location);
     }
@@ -238,11 +270,11 @@ public partial class HardwarePage : ContentPage
             await SpeechService.SpeakAsync(helpText);
             SetStatus("TTS Stream streaming help asset arrays.");
         }
-        catch (Exception ex;
+        catch (Exception ex)
         {
             SetStatus($"Text-to-Speech Engine Fault: {ex.Message}");
         }
-        }
+    }
 
     private void OnStopSpeechClicked(object? sender, EventArgs e)
     {
